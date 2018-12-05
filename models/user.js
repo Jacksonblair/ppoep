@@ -4,7 +4,7 @@ var passportLocalMongoose = require("passport-local-mongoose");
 var UserSchema = new mongoose.Schema({
    username: String,
    password: String,
-   isAdmin: {type: Boolean, default: false}
+   avatar: { type: String, default: '/assets/images/ppoep.png'},
 });
 
 UserSchema.plugin(passportLocalMongoose);

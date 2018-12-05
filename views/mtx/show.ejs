@@ -9,8 +9,14 @@
         <img src="<%= submtx.image %>">
     </div>    
     <div class="ui segment">
-        <p><%= submtx.description %></p>        
-        <p><em>Submitted by <%= submtx.author.username %></em></p>
+        <p><%= submtx.description %></p>      
+        
+        <p><em>Submitted by 
+            <a href="/users/<%= submtx.author.id %>">
+                <%= submtx.author.username %>
+            </a>
+        </em></p>
+        
         <% if(currentUser && submtx.author.id.equals(currentUser._id)){ %>
             <a class="tiny ui red button" href="/mtx/<%=submtx._id%>/edit">Edit</a>
             <form class="delete-form" action="/mtx/<%=submtx._id%>?_method=DELETE" method="POST">

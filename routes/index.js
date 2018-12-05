@@ -52,4 +52,16 @@ router.get("/logout", function(req, res) {
    res.redirect("/mtx");
 });
 
+// USER PROFILE ROUTE
+router.get("/users/:user_id", function(req, res) {
+    User.findById(req.params.user_id, function(err, foundUser){
+       if (err) {
+           req.flash("error", "User not found.");
+           res.redirect("back");
+       } else {
+           res.render("users/show", {user: foundUser})
+       }
+    });
+});
+
 module.exports = router;

@@ -2,6 +2,12 @@
     display: inline;
 }
 
+.ui.footer.segment {
+margin: 5em 0em 0em;
+padding: 1em 0em;
+color: grey;
+}
+
 .content {
     padding: 0;
 }
