@@ -1,0 +1,23 @@
+<% include ../partials/header %>
+
+
+<div class="ui main text container segment">
+    <div class="row">
+        <h1>Edit Comment</h1>
+        <div>
+            <form class="ui form" action="/mtx/<%=submtx_id%>/comments/<%=comment._id%>?_method=PUT" method="POST">
+                <div>
+                    <textarea name="comment[text]"><%=comment.text%></textarea>
+                </div>         
+                <div>
+                    <button class="positive ui button">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+<% include ../partials/footer %>

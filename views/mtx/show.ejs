@@ -1,0 +1,41 @@
+<% include ../partials/header %>
+
+
+<div class="ui container">
+    <div class="ui segment">
+        <h2><%= submtx.title %></h2>
+    </div>    
+    <div class="ui segment">
+        <img src="<%= submtx.image %>">
+    </div>    
+    <div class="ui segment">
+        <p><%= submtx.description %></p>        
+        <p><em>Submitted by <%= submtx.author.username %></em></p>
+        <% if(currentUser && submtx.author.id.equals(currentUser._id)){ %>
+            <a class="tiny ui red button" href="/mtx/<%=submtx._id%>/edit">Edit</a>
+            <form class="delete-form" action="/mtx/<%=submtx._id%>?_method=DELETE" method="POST">
+                <button class="tiny ui yellow button">Delete</button>            
+            </form>
+        <% } %>
+    </div>
+    <p>
+        <a class="ui positive button" href="/mtx/<%=submtx._id%>/comments/new">Add new comment</a>
+    </p>
+    <div class="ui segment">
+        <h2>Comments</h2>
+        <% submtx.comments.forEach(function(comment){ %>
+            <p><strong><%= comment.author.username %></strong> - <%= comment.text %></p>
+            
+            <% if (currentUser && comment.author.id.equals(currentUser._id)) { %>
+                <a class="ui mini yellow button" href="/mtx/<%=submtx._id%>/comments/<%=comment._id%>/edit">Edit</a>
+                <form class="delete-form" action="/mtx/<%=submtx._id%>/comments/<%=comment._id%>/?_method=DELETE" method="POST">
+                    <button class="ui mini red button">Delete</button>
+                </form>
+            <% }; %>
+            
+        <% }); %>
+    </div>
+</div>
+
+
+<% include ../partials/footer %>

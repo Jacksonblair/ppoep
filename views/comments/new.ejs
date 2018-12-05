@@ -1,0 +1,23 @@
+<% include ../partials/header %>
+
+
+<div class="ui main text container segment">
+    <div class="row">
+        <h1>Add new comment to <%=submtx.title%></h1>
+        <div>
+            <form class="ui form" action="/mtx/<%=submtx._id%>/comments" method="POST">
+                <div>
+                    <input type="text" name="comment[text]" placeholder="Comment goes here . . .">
+                </div>                
+                <div>
+                    <button class="positive ui button">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+<% include ../partials/footer %>

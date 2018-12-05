@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title> Pretty POE Princess</title>        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"/>
+        <script
+        src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+        <link rel="stylesheet" href="/stylesheets/main.css">
+    </head>
+    <body>
+    <div class="ui container">
+      <div class="ui grey inverted menu" id="menuheader">
+        <div class="ui small image" id="menulogo">
+          <a href="/">
+            <img src="/assets/images/ppoep.png">
+          </a>
+        </div>   
+        <div class="right menu">
+          <a class="ui item" href="/">
+            Home
+          </a>
+          <% if(!currentUser){ %>
+            <a class="ui item" href="/register">
+              Register
+            </a>    
+            <a class="ui item" href="/login">
+              Login
+            </a>
+          <% } else { %>
+            <div class="ui item">
+              <p>Currently logged in as: <%=currentUser.username%> </p>
+            </div>
+            <a class="ui item" href="/logout">
+              Logout
+            </a>
+          <% } %>
+        </div>
+      </div>
+    </div>
+    
+    <div class="ui container">
+      <% if (error && error.length > 0) { %>
+        <div class="ui error message">
+          <i class="close icon"></i>
+          <div class="header">
+            <%= error %>
+          </div>
+        </div>
+      <% } %>
+      
+      <% if (success && success.length > 0) { %>
+        <div class="ui positive message">
+          <i class="close icon"></i>
+          <div class="header">
+            <%= success %>
+          </div>
+        </div>
+      <% } %>
+    </div>

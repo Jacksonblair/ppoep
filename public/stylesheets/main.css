@@ -1,0 +1,30 @@
+.mtxlist {
+    display: inline;
+}
+
+.content {
+    padding: 0;
+}
+
+body {
+    background: black;
+}
+
+#menuheader {
+    margin-bottom: 0px;
+    margin-top: 5px;
+    border-radius: 0px;
+}
+
+#welcomemsg {
+    margin-bottom: 12px;
+    border-radius: 0px;
+}
+
+#menulogo {
+    padding: 10px;
+}
+
+.delete-form {
+    display: inline;
+}
