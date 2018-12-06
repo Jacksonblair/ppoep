@@ -9,7 +9,11 @@ var express         = require("express"),
     Comment         = require("./models/comment"),
     User            = require("./models/user"),
     methodOverride  = require("method-override"),
-    seedDB          = require("./seeds")
+    seedDB          = require("./seeds"),
+    async           = require("async"),
+    nodemailer      = require("nodemailer"),
+    crypto          = require("crypto")
+
     
 var commentRoutes       = require("./routes/comments"),
     mtxRoutes           = require("./routes/mtx"),
