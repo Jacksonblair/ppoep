@@ -24,7 +24,9 @@ DESTROY     /mtx/:id       DELETE          Delete a particular mtx, then redirec
 
 
 
-
+# NOTES
+git push - pushes last commit to github repository
+git fetch - nfi how this works yet
 
 
 

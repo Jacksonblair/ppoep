@@ -15,7 +15,6 @@ router.get("/new", middleware.isLoggedIn, function(req, res) {
             res.render("comments/new", {submtx: foundSubmtx});
         }
     });
-
 });
 
 // CREATE COMMENT ROUTE

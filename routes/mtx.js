@@ -7,14 +7,29 @@ var express     = require("express"),
 
 // INDEX ROUTE - SHOW ALL MTX
 router.get("/", function(req, res){
-    // get all submtx from DB
-    Submtx.find({}, function(err, allSubmtx){
-        if (err) {
-            console.log(err);
-        } else {
-            res.render("mtx/index", {submtx: allSubmtx})             
-        }
-    });
+    var noMatch;
+    if (req.query.search) {
+        const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+        Submtx.find({title: regex}, function(err, allSubmtx){
+            if (err) {
+                console.log(err);
+            } else {
+                if(allSubmtx.length <1) {
+                    noMatch = "Nothing matches your search :("
+                }
+                res.render("mtx/index", {submtx: allSubmtx, noMatch: noMatch})             
+            }
+        });        
+    } else {
+        // get all submtx from DB
+        Submtx.find({}, function(err, allSubmtx){
+            if (err) {
+                console.log(err);
+            } else {
+                res.render("mtx/index", {submtx: allSubmtx, noMatch: noMatch})             
+            }
+        });
+    }
 });
 
 // CREATE SUBMTX ROUTE
@@ -90,5 +105,10 @@ router.delete("/:submtx_id/", middleware.checkSubmtxOwnership, function(req, res
        }
    });
 });
+
+
+function escapeRegex(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};
 
 module.exports = router;

@@ -7,8 +7,23 @@
       <h1 class="ui header">Welcome to Pretty POE Princesses</h1>
       <p>This is a website for uploading and viewing MTX combinations.</p>
       <a class="positive ui button" href="/mtx/new">Add new MTX</a> 
+      
+      <div class="ui divider"></div>
+      
+        <form action="/mtx" method="GET">
+            <div class="ui search">
+              <input class="prompt" type="text" name="search" placeholder="Search mtx...">
+            </div>
+        </form>        
+
     </div>      
   </div>
+
+    <% if(noMatch !== undefined) { %>
+      <div class="ui center aligned segment">
+        <div class="ui medium header"><%= noMatch %></div>
+      </div>
+    <% } %>
 
   <div class="row">
     <div class="ui five stackable cards">
