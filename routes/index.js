@@ -92,11 +92,11 @@ router.post('/forgot', function(req, res, next) {
       });
     },
     function(token, user, done) {
-      var smtpTransport = nodemailer.createTransport({
-        service: 'Gmail',
+      var smtpTransport = nodemailer.createTransport('SMTP', {
+        service: 'SendGrid',
         auth: {
-          user: 'ppoepbox@gmail.com',
-          pass: 'process.env.GMAILPW'
+          user: 'jacksonblair',
+          pass: process.env.SENDGRIDPW
         }
       });
       var mailOptions = {
@@ -109,12 +109,14 @@ router.post('/forgot', function(req, res, next) {
           'If you did not request this, please ignore this email and your password will remain unchanged.\n'
       };
       smtpTransport.sendMail(mailOptions, function(err) {
-        req.flash('info', 'An e-mail has been sent to ' + user.email + ' with further instructions.');
+        req.flash('success', 'An e-mail has been sent to ' + user.email + ' with further instructions.');
         done(err, 'done');
       });
+      console.log(smtpTransport);
     }
   ], function(err) {
     if (err) return next(err);
+    console.log("DID WE GET HERE?");
     res.redirect('/forgot');
   });
 });
