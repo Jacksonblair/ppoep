@@ -1,23 +1,15 @@
 <% include ../partials/header %>
 
-<div class="ui container">
+<div id="maincontainer" class="ui container">
   
-  <div class="row">
-    <div class="ui message" id="welcomemsg">
-      <h1 class="ui header">Welcome to Pretty POE Princesses</h1>
-      <p>This is a website for uploading and viewing MTX combinations.</p>
-      <a class="positive ui button" href="/mtx/new">Add new MTX</a> 
-      
-      <div class="ui divider"></div>
-      
-        <form action="/mtx" method="GET">
-            <div class="ui search">
-              <input class="prompt" type="text" name="search" placeholder="Search mtx...">
-            </div>
-        </form>        
-
-    </div>      
-  </div>
+  <div class="ui segment" id="mainsegment">
+    <div class="ui small header">
+      <a href="/">Landing</a> / mtx
+    </div>
+    <div class="ui large header">
+      User Submitted MTX
+    </div>
+    <div class="ui divider"></div>
 
     <% if(noMatch !== undefined) { %>
       <div class="ui center aligned segment">
@@ -50,6 +42,7 @@
   </div>
 </div>
 
+</div>
   
 </div>
 

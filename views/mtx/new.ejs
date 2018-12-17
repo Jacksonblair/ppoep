@@ -1,29 +1,26 @@
 <% include ../partials/header %>
 
-
-<div class="ui main text container segment">
-    <div class="row">
-        <h1>Add new mtx</h1>
-        <div>
+<div id="maincontainer" class="ui container">
+  <div class="ui center aligned segment" id="mainsegment">
+      <div class="ui text container" id="newmtxsegment">
             <form class="ui form" action="/mtx" method="POST">
-                <div>
-                    <input type="text" name="title" placeholder="title">
-                </div>                
-                <div>
-                    <input type="text" name="image" placeholder="image url">
-                </div>
-                <div>
-                    <textarea name="description" placeholder="description"></textarea>
-                </div>         
-                <div>
-                    <button class="positive ui button">Submit</button>
-                </div>
+              <div class="field">
+                <label>Title</label>
+                <input type="text" name="title" placeholder="title">
+              </div>              
+              <div class="field">
+                <label>Image</label>
+                <input type="text" name="image" placeholder="image url">
+              </div>
+              <div class="field">
+                <label>Description</label>
+                <textarea name="description" placeholder="description"></textarea>
+              </div>
+                <button class="ui positive button">Submit</button>
             </form>
         </div>
     </div>
 </div>
-
-
 
 
 <% include ../partials/footer %>

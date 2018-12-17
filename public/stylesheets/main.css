@@ -3,7 +3,7 @@
 }
 
 .ui.footer.segment {
-margin: 5em 0em 0em;
+margin: 0em 0em 0em;
 padding: 1em 0em;
 color: grey;
 }
@@ -13,7 +13,8 @@ color: grey;
 }
 
 body {
-    background: black;
+    background: #330033;
+    font-family: 'Ubuntu', sans-serif;
 }
 
 #menuheader {
@@ -31,6 +32,77 @@ body {
     padding: 10px;
 }
 
+#largelogodiv {
+    margin: 0;
+    border-radius: 0px;
+}
+
+#topmenudiv {
+    margin: 0;
+    border-radius: 0px;
+}
+
+#toplogodiv {
+    margin-bottom: 0;
+    margin-top: 20px;
+    border-radius: 15px 15px 0px 0px;
+}
+
+#maincontainer {
+    min-height: 100%;
+}
+
+#formsegment {
+    width: 30%;
+}
+
+#mainsegment {
+    min-height: 1000px;
+    padding-top: 3rem;
+}
+
+#newmtxsegment {
+    width: 50%;
+}
+
+span.pinkspan {
+    color: pink;
+}
+
+.ui.segment {
+    border-radius: 0px;
+}
+
 .delete-form {
     display: inline;
+}
+
+.regbutton {
+    display: inline;
+}
+
+.ui.menu .item.rmenu {
+    padding: .3rem .5rem .3rem .5rem;
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
+}
+
+.ui.positive.message, .ui.error.message {
+    padding: .5rem;
+    border-radius: 0;
+    border: none;
+    text-align: center;
+}
+
+.ui.placeholder.segment {
+    min-height: 0px;
+}
+
+.div.ui.mainsegment.header {
+    padding: 2em;
+}
+
+.ui.large.header {
+    padding: 0em 0em 0em 0em;
+    margin-top: 0em;
 }

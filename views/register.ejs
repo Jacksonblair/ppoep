@@ -1,14 +1,28 @@
 <% include ./partials/header %>
 
-<h1>SIGN UP</h1>
-
-<div class="ui container">
-    <form action="/register" method="POST">
-        <input type="text" name="username" placeholder="username">
-        <input type="password" name="password" placeholder="password">
-        <input type="email" name="email" placeholder="e-mail address">
-        <button class="positive ui button">REGISTER</button>
-    </form>    
+<div id="maincontainer" class="ui container">
+  <div class="ui center aligned segment" id="mainsegment">
+    <div class="ui huge header">
+        Make a new account
+    </div>
+      <div class="ui text container" id="formsegment">
+            <form class="ui form" action="/register" method="POST">
+              <div class="field">
+                <label>Username</label>
+                <input type="text" name="username" placeholder="username">
+              </div>
+              <div class="field">
+                <label>Password</label>
+                <input type="password" name="password" placeholder="password">
+              </div>              
+              <div class="field">
+                <label>E-mail</label>
+                <input type="email" name="email" placeholder="e-mail address">
+              </div>
+                <button class="ui positive button">Register</button>
+            </form>
+        </div>
+    </div>
 </div>
 
 <% include ./partials/footer %>

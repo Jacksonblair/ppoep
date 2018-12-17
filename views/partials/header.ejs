@@ -9,57 +9,90 @@
         crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
         <link rel="stylesheet" href="/stylesheets/main.css">
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,400i,700" rel="stylesheet">
     </head>
     <body>
+      
     <div class="ui container">
-      <div class="ui grey inverted menu" id="menuheader">
-        <div class="ui small image" id="menulogo">
-          <a href="/">
-            <img src="/assets/images/ppoep.png">
-          </a>
-        </div>   
-        <div class="right menu">
-          <a class="ui item" href="/">
-            Home
-          </a>
-          <% if(!currentUser){ %>
-            <a class="ui item" href="/register">
-              Register
-            </a>    
-            <a class="ui item" href="/login">
-              Login
-            </a>
-          <% } else { %>
-            <div class="ui item">
-              <p>Currently logged in as: <%=currentUser.username%> </p>
-            </div>
-            <a class="ui item" href="/logout">
-              Logout
-            </a>      
-            <a class="ui item" href="/users/<%=currentUser.id%>">
-              Profile
-            </a>
-          <% } %>
-        </div>
+      
+      <div class="ui center aligned segment" id="toplogodiv">
+        <a href="/">
+          <div class="ui huge grey header" id="ppoep">
+              <span class="pinkspan">PRETTY</span>POE<span class="pinkspan">PRINCESS</span>     
+          </div>
+        </a>
       </div>
-    </div>
-    
+      
+      <div id="topmenudiv" class="ui borderless menu">
+        
+            <div class="item rmenu">
+              <a href="/mtx">
+                <button class="mini ui green button">HOME</button>
+              </a>
+            </div>
+        
+            <div class="item rmenu">
+              <div class="ui icon input">
+                <input type="text" placeholder="Search MTX...">
+                <i class="search icon"></i>
+              </div>
+            </div>
+          
+          <% if(!currentUser){ %>
+            <div class="right menu">
+              <div class="item rmenu">
+                <a href="/login">
+                  <button class="mini ui green button">LOGIN</button>
+                </a>
+              </div>        
+              <div class="item rmenu">
+                <a href="/register">
+                  <button class="mini ui green button">REGISTER</button>
+                </a>
+              </div>
+            </div>
+          <% } else { %>
+            <div class="right menu">
+              <div class="item rmenu">
+                <a href="/logout">
+                  <button class="mini ui button"><i class="user icon"></i><%=currentUser.username.toUpperCase()%></button>
+                </a>
+              </div>                
+              <div class="item rmenu">
+                <a href="/logout">
+                  <button class="mini ui button"><i class="sign-out icon"></i>LOG OUT</button>
+                </a>
+              </div>
+              <div class="item rmenu">
+              <a href="/mtx/new">
+                <button class="mini ui pink button"><i class="star icon"></i>ADD NEW MTX</button>
+              </a>
+            </div> 
+            </div>
+          <% } %>
+  
+      </div>
+        
     <div class="ui container">
       <% if (error && error.length > 0) { %>
         <div class="ui error message">
-          <i class="close icon"></i>
           <div class="header">
             <%= error %>
           </div>
         </div>
       <% } %>
       
+    
       <% if (success && success.length > 0) { %>
         <div class="ui positive message">
-          <i class="close icon"></i>
           <div class="header">
             <%= success %>
           </div>
         </div>
       <% } %>
     </div>
+    
+      
+
+    </div>
+    
