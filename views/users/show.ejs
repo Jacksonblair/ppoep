@@ -3,16 +3,17 @@
 <div id="maincontainer" class="ui container">
     <div class="ui center aligned segment" id="mainsegment">
         <h2><%= user.username %></h2>
+        <div class="ui bordered image">
+            <img src="<%=user.avatar%>">
+        </div>   
+        
+        <div class="ui left aligned segment">
+            <div class="ui header">
+                MTX submitted by this user
+            </div>
+        </div>
+        
     </div>
-</div>
-
-<div class="ui container">
-    <div class="ui segment">
-        <h2><%= user.username %></h2>
-        <div class="ui image">
-        <img src="<%= user.avatar %>">
-        </div>    
-    </div>        
 </div>
 
 

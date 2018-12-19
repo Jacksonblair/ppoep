@@ -36,6 +36,9 @@ router.get("/", function(req, res){
 router.post("/", middleware.isLoggedIn, function(req, res){
     var title = req.body.title;
     var image = req.body.image;
+        if (image == "") {
+        image = undefined;
+    }
     var description = req.body.description;
     var author = {
         id: req.user._id,

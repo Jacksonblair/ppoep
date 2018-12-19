@@ -5,7 +5,7 @@ var mongoose = require("mongoose");
 // SCHEMA SET UP
 var submtxSchema = new mongoose.Schema({
    title: String,
-   image: String,
+   image: { type: String, default: "/assets/images/submtx.png"},
    description: String,
    author: {
       id: {

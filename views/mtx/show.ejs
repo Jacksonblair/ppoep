@@ -28,42 +28,49 @@
             
             <div class="ui left aligned segment">
                 <div class="ui comments">
+                  
                   <h3 class="ui dividing header">Comments</h3>
-                  <% submtx.comments.forEach(function(comment){ %>
-                  
-                  
-                  <div class="comment">
-                    <a class="avatar">
-                      <img src="<%=comment.author.avatar%>">
-                    </a>
-                    <div class="content">
-                      <a class="author"><%= comment.author.username %></a>
-                      <div class="metadata">
-                        <span class="date">Today at 5:42PM</span>
-                      </div>
-                      <div class="text">
-                        <%= comment.text %>
-                      </div>
-                      <div class="actions">
-                        <a class="reply">
-                          <button class="ui mini basic button">Reply</button>
-                        </a>
-                        <% if (currentUser && comment.author.id.equals(currentUser._id)) { %>
-                            <a href="/mtx/<%=submtx._id%>/comments/<%=comment._id%>/edit">
-                            <button class="ui mini basic button">Edit</button>
-                            </a>
-                            <form class="delete-form" action="/mtx/<%=submtx._id%>/comments/<%=comment._id%>/?_method=DELETE" method="POST">
-                                <button class="ui mini basic button">Delete</button>
-                            </form>
-                        <% }; %>
-                      </div>
+              
+                  <% if (submtx.comments.length < 1) { %>
+                    <div class="ui basic center aligned segment">
+                      <h3>There are no comments here. :(</h3>                      
                     </div>
-                  </div>
-                  
-                  
-                <% }); %>
+
+                  <% } else { %>
+                    <% submtx.comments.forEach(function(comment){ %>
+                      <div class="comment">
+                        <a class="avatar">
+                          <img src="<%= comment.author.avatar %>">
+                        </a>
+                        <div class="content">
+                          <a href="/users/<%= comment.author.id %>" class="author"><%= comment.author.username %></a>
+                          <div class="metadata">
+                            <span class="date">Today at 5:42PM</span>
+                          </div>
+                          <div class="text">
+                            <%= comment.text %>
+                          </div>
+                          <div class="actions">
+                            <a class="reply">
+                              <button class="ui mini basic button">Reply</button>
+                            </a>
+                            <% if (currentUser && comment.author.id.equals(currentUser._id)) { %>
+                                <a href="/mtx/<%=submtx._id%>/comments/<%=comment._id%>/edit">
+                                <button class="ui mini basic button">Edit</button>
+                                </a>
+                                <form class="delete-form" action="/mtx/<%=submtx._id%>/comments/<%=comment._id%>/?_method=DELETE" method="POST">
+                                    <button class="ui mini basic button">Delete</button>
+                                </form>
+                            <% }; %>
+                          </div>
+                        </div>
+                      </div>
+                    <% }); %>
+                  <% } %>
+
+  
                 </div>
-                
+ 
                 <div class="ui center aligned basic segment">
                   <p>
                       <a class="ui positive button" href="/mtx/<%=submtx._id%>/comments/new">Add new comment</a>
