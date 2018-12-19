@@ -54,7 +54,7 @@
           <% } else { %>
             <div class="right menu">
               <div class="item rmenu">
-                <a href="/logout">
+                <a href="/users/<%=currentUser._id%>">
                   <button class="mini ui button"><i class="user icon"></i><%=currentUser.username.toUpperCase()%></button>
                 </a>
               </div>                

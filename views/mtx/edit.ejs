@@ -1,29 +1,26 @@
 <% include ../partials/header %>
 
-
-<div class="ui main text container segment">
-    <div class="row">
-        <h1>Edit <%=submtx.title%> </h1>
-        <div>
+<div id="maincontainer" class="ui container">
+    <div class="ui center aligned segment" id="mainsegment">
+        <div class="ui text container" id="newmtxsegment">
             <form class="ui form" action="/mtx/<%= submtx._id %>?_method=PUT" method="POST">
-                <div>
+                <div class="field">
+                    <label>Title</label>
                     <input type="text" name="submtx[title]" value="<%=submtx.title%>">
                 </div>                
-                <div>
+                <div class="field">
+                    <label>Image</label>
                     <input type="text" name="submtx[image]" value="<%=submtx.image%>">
                 </div>
-                <div>
+                <div class="field">
+                    <label>Description</label>
                     <textarea name="submtx[description]"><%=submtx.description%></textarea>
                 </div>         
-                <div>
                     <button class="positive ui button">Submit</button>
                 </div>
             </form>
-        </div>
+        </div>      
     </div>
 </div>
-
-
-
 
 <% include ../partials/footer %>

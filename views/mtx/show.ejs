@@ -1,47 +1,81 @@
 <% include ../partials/header %>
 
-
-<div class="ui container">
-    <div class="ui segment">
-        <h2><%= submtx.title %></h2>
-    </div>    
-    <div class="ui segment">
-        <img src="<%= submtx.image %>">
-    </div>    
-    <div class="ui segment">
-        <p><%= submtx.description %></p>      
-        
-        <p><em>Submitted by 
-            <a href="/users/<%= submtx.author.id %>">
-                <%= submtx.author.username %>
-            </a>
-        </em></p>
-        
-        <% if(currentUser && submtx.author.id.equals(currentUser._id)){ %>
-            <a class="tiny ui red button" href="/mtx/<%=submtx._id%>/edit">Edit</a>
-            <form class="delete-form" action="/mtx/<%=submtx._id%>?_method=DELETE" method="POST">
-                <button class="tiny ui yellow button">Delete</button>            
-            </form>
-        <% } %>
-    </div>
-    <p>
-        <a class="ui positive button" href="/mtx/<%=submtx._id%>/comments/new">Add new comment</a>
-    </p>
-    <div class="ui segment">
-        <h2>Comments</h2>
-        <% submtx.comments.forEach(function(comment){ %>
-            <p><strong><%= comment.author.username %></strong> - <%= comment.text %></p>
+<div id="maincontainer" class="ui container">
+  <div class="ui center aligned segment" id="mainsegment">
+      
+        <div class="ui text container" id="showmtxsegment">
+            <div class="ui large header"><%= submtx.title %></div>
+            <div class="ui image">
+                <img src="<%= submtx.image %>">
+                <% if(currentUser && submtx.author.id.equals(currentUser._id)){ %>
+                    <a class="tiny ui grey button" href="/mtx/<%=submtx._id%>/edit">Edit</a>
+                    <form class="delete-form" action="/mtx/<%=submtx._id%>?_method=DELETE" method="POST">
+                        <button class="tiny ui grey button">Delete</button>            
+                    </form>
+                <% } %>
+            </div>
+            <div class="ui segment">
+                <div class="ui left aligned header">Description</div>
+                <p><%= submtx.description %></p>              
+            </div>
+            <div class="ui left aligned basic segment" id="commentauthorsegment">
+              <p><em>Submitted by 
+                  <a href="/users/<%= submtx.author.id %>">
+                      <%= submtx.author.username %>
+                  </a>
+              </em></p>              
+            </div>
             
-            <% if (currentUser && comment.author.id.equals(currentUser._id)) { %>
-                <a class="ui mini yellow button" href="/mtx/<%=submtx._id%>/comments/<%=comment._id%>/edit">Edit</a>
-                <form class="delete-form" action="/mtx/<%=submtx._id%>/comments/<%=comment._id%>/?_method=DELETE" method="POST">
-                    <button class="ui mini red button">Delete</button>
-                </form>
-            <% }; %>
+            <div class="ui left aligned segment">
+                <div class="ui comments">
+                  <h3 class="ui dividing header">Comments</h3>
+                  <% submtx.comments.forEach(function(comment){ %>
+                  
+                  
+                  <div class="comment">
+                    <a class="avatar">
+                      <img src="<%=comment.author.avatar%>">
+                    </a>
+                    <div class="content">
+                      <a class="author"><%= comment.author.username %></a>
+                      <div class="metadata">
+                        <span class="date">Today at 5:42PM</span>
+                      </div>
+                      <div class="text">
+                        <%= comment.text %>
+                      </div>
+                      <div class="actions">
+                        <a class="reply">
+                          <button class="ui mini basic button">Reply</button>
+                        </a>
+                        <% if (currentUser && comment.author.id.equals(currentUser._id)) { %>
+                            <a href="/mtx/<%=submtx._id%>/comments/<%=comment._id%>/edit">
+                            <button class="ui mini basic button">Edit</button>
+                            </a>
+                            <form class="delete-form" action="/mtx/<%=submtx._id%>/comments/<%=comment._id%>/?_method=DELETE" method="POST">
+                                <button class="ui mini basic button">Delete</button>
+                            </form>
+                        <% }; %>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  
+                <% }); %>
+                </div>
+                
+                <div class="ui center aligned basic segment">
+                  <p>
+                      <a class="ui positive button" href="/mtx/<%=submtx._id%>/comments/new">Add new comment</a>
+                  </p>  
+                </div>
+            </div>
             
-        <% }); %>
+            
+            
+            
+        </div>
     </div>
 </div>
-
 
 <% include ../partials/footer %>
